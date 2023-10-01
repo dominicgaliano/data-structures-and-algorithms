@@ -262,12 +262,18 @@ class DoublyLinkedList:
 
         # edge case, removing last node
         if not currNode.next:
-            self.tail = currNode
+            self.tail = currNode.prev
+
+        # edge case, removing first node
+        if self.head == currNode:
+            self.head = currNode.next
 
         # redirect pointers
         removedNode = currNode
-        currNode.prev.next = currNode.next
-        currNode.next.prev = currNode.prev
+        if currNode.prev is not None:
+            currNode.prev.next = currNode.next
+        if currNode.next is not None:
+            currNode.next.prev = currNode.prev
 
         return removedNode
 
