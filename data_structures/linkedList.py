@@ -249,26 +249,25 @@ class DoublyLinkedList:
         if not self.head:
             return None
 
-        # init two pointers to traverse
-        trav1 = self.head
-        trav2 = self.head.next
+        # init pointer to traverse
+        currNode = self.head
 
-        # shift both nodes along until trav2.value = positionValue
-        while trav2 and trav2.value != positionValue:
-            trav1 = trav1.next
-            trav2 = trav2.next
+        # traverse until curNode has positionValue or end of list
+        while currNode and currNode.value != positionValue:
+            currNode = currNode.next
 
         # no positionValue found
-        if not trav2:
+        if not currNode:
             return None
 
-        # edge case, removed last node
-        if not trav2.next:
-            self.tail = trav1
+        # edge case, removing last node
+        if not currNode.next:
+            self.tail = currNode
 
-        # redirect trav1 pointer
-        removedNode = trav2
-        trav1.next = trav2.next
+        # redirect pointers
+        removedNode = currNode
+        currNode.prev.next = currNode.next
+        currNode.next.prev = currNode.prev
 
         return removedNode
 
