@@ -1,6 +1,8 @@
 """
-Linked List - Sequential list of nodes that holds data which point to
-              other nodes also containing data.
+## Linked List
+
+Sequential list of nodes that holds data which point to other nodes also
+containing data.
 
 Usage:
 - List, Queue, and Stack Implementation
