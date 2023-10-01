@@ -95,7 +95,7 @@ class SinglyLinkedList:
 
         return newNode
 
-    def delete(self, positionValue):
+    def deleteAt(self, positionValue):
         """
         Delete first node with positionValue, returns deleted node if
         successful and None if unsuccessful.
@@ -144,8 +144,8 @@ def main():
     print(list1)
 
     # successful and unsuccessful delete
-    list1.delete(10)
-    list1.delete(11)
+    list1.deleteAt(10)
+    list1.deleteAt(11)
 
     print(list1)
 
