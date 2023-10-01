@@ -78,7 +78,7 @@ class SinglyLinkedList:
             currNode = currNode.next
 
         # if end of list reached, return None
-        if not currNode:
+        if not currNode.next:
             return None
 
         newNode = Node(newValue)
