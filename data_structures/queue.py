@@ -1,18 +1,12 @@
-# Using python native linked list to eliminate
-from collections import deque
+from linkedList import DoublyLinkedList
 
 
 class Queue:
     def __init__(self):
-        self.queue = deque
+        self.q = DoublyLinkedList
 
     def __str__(self):
-        output = ""
-
-        for element in q:
-            output += f"{element} "
-
-        return output.strip()
+        return str(self.q)
 
     def enqueue(self, value):
         pass
