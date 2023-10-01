@@ -94,6 +94,13 @@ class SinglyLinkedList:
         if not self.head:
             return None
 
+        # edge case, inserting at beginning of list
+        if self.head.value == positionValue:
+            newNode = Node(newValue)
+            newNode.next = self.head
+            self.head = newNode
+            return newNode
+
         # traverse list until one node before node with positionValue
         currNode = self.head
         while currNode.next and currNode.next.value != positionValue:
