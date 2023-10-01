@@ -281,7 +281,21 @@ class DoublyLinkedList:
         return removedNode
 
     def removeFirst(self):
-        pass
+        """Removes and returns first element in list"""
+        # edge case, empty
+        if self.head is None:
+            return None
+
+        removedNode = self.head
+        self.head = removedNode.next
+        if self.head:
+            self.head.prev = None
+
+        # edge case, list is length 1
+        if removedNode.next is None:
+            self.tail = self.head
+
+        return removedNode
 
 
 def main():
