@@ -13,6 +13,3 @@ class Queue:
 
     def dequeue(self):
         pass
-
-    def peek(self):
-        pass
