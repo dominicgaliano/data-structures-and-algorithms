@@ -67,6 +67,13 @@ class TestSinglyLinkedListMethods(unittest.TestCase):
         self.assertEqual(deletedNode, None)
         self.assertEqual(str(testList), "1 2 3")
 
+    def test_delete_change_head_tail(self):
+        testList = SinglyLinkedList()
+        testList.append(1)
+        testList.deleteAt(1)
+        self.assertEqual(None, testList.head)
+        self.assertEqual(None, testList.tail)
+
     def test_prepend(self):
         testList = SinglyLinkedList()
         testList.prepend(1)
@@ -159,6 +166,13 @@ class TestDoublyLinkedListMethods(unittest.TestCase):
         insertedNode = testList.prepend(1)
         self.assertEqual(insertedNode, testList.head)
         self.assertEqual(insertedNode, testList.tail)
+
+    def test_delete_change_head_tail(self):
+        testList = DoublyLinkedList()
+        testList.append(1)
+        testList.deleteAt(1)
+        self.assertEqual(None, testList.head)
+        self.assertEqual(None, testList.tail)
 
 
 if __name__ == "__main__":
