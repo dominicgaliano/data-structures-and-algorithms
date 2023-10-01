@@ -174,6 +174,29 @@ class TestDoublyLinkedListMethods(unittest.TestCase):
         self.assertEqual(None, testList.head)
         self.assertEqual(None, testList.tail)
 
+    def test_removeFirst(self):
+        testList = DoublyLinkedList()
+        testList.append(1)
+        testList.append(2)
+        testList.append(3)
+        removedNode = testList.removeFirst()
+        self.assertEqual(removedNode.value, 1)
+        self.assertEqual(str(testList), "2 3")
+        self.assertEqual(testList.head.value, 2)
+        self.assertEqual(testList.tail.value, 3)
+
+    def test_removeFirst_empty(self):
+        testList = DoublyLinkedList()
+        removedNode = testList.removeFirst()
+        self.assertEqual(removedNode, None)
+
+    def test_removeFirst_headtail(self):
+        testList = DoublyLinkedList
+        testList.append(1)
+        testList.removeFirst()
+        self.assertEqual(testList.head.value, None)
+        self.assertEqual(testList.tail.value, None)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -280,6 +280,9 @@ class DoublyLinkedList:
 
         return removedNode
 
+    def removeFirst(self, value):
+        pass
+
 
 def main():
     # singly linked list demo
