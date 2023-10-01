@@ -211,6 +211,14 @@ class DoublyLinkedList:
         if not self.head:
             return None
 
+        # edge case, inserting at beginning of list
+        if self.head.value == positionValue:
+            newNode = Node(newValue)
+            newNode.next = self.head
+            self.head.prev = newNode
+            self.head = newNode
+            return newNode
+
         # traverse list until one node before node with positionValue
         currNode = self.head
         while currNode.next and currNode.next.value != positionValue:
@@ -223,7 +231,12 @@ class DoublyLinkedList:
         newNode = Node(newValue)
 
         # point newNode prev and next to correct nodes
-        newNode.prev = currentNode
+        newNode.prev = currNode
+        newNode.next = currNode.next
+
+        # point nodes on either side of insertion pos to newNode
+        currNode.next.prev = newNode
+        currNode.next = newNode
 
         return newNode
 
