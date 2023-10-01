@@ -191,7 +191,7 @@ class TestDoublyLinkedListMethods(unittest.TestCase):
         self.assertEqual(removedNode, None)
 
     def test_removeFirst_headtail(self):
-        testList = DoublyLinkedList
+        testList = DoublyLinkedList()
         testList.append(1)
         testList.removeFirst()
         self.assertEqual(testList.head.value, None)
