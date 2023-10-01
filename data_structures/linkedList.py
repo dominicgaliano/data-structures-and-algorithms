@@ -105,10 +105,6 @@ class SinglyLinkedList:
 
         newNode = Node(newValue)
 
-        # edge case, inserting at end of list
-        if not currNode.next:
-            self.tail = newNode
-
         # redirect two pointers to newNode
         newNode.next = currNode.next
         currNode.next = newNode
