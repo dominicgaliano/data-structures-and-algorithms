@@ -26,9 +26,9 @@ Types:
 
 
 class Node:
-    def __init__(self, value, nextNode=None):
+    def __init__(self, value, next=None):
         self.value = value
-        self.nextNode = nextNode
+        self.next = next
 
 
 class SinglyLinkedList:
@@ -44,7 +44,7 @@ class SinglyLinkedList:
         i = 0
         while currNode:
             stringOutput += f"{currNode.value} "
-            currNode = currNode.nextNode
+            currNode = currNode.next
             i += 1
 
         return stringOutput.strip()
@@ -55,7 +55,7 @@ class SinglyLinkedList:
 
         # set old tail node to point to new node
         if self.tail:
-            self.tail.nextNode = newNode
+            self.tail.next = newNode
 
         # set list tail pointer to point to new node
         self.tail = newNode
@@ -74,8 +74,8 @@ class SinglyLinkedList:
 
         # traverse list until one node before node with positionValue
         currNode = self.head
-        while currNode.nextNode and currNode.nextNode.value != positionValue:
-            currNode = currNode.nextNode
+        while currNode.next and currNode.next.value != positionValue:
+            currNode = currNode.next
 
         # if end of list reached, return None
         if not currNode:
@@ -84,12 +84,12 @@ class SinglyLinkedList:
         newNode = Node(newValue)
 
         # edge case, inserting at end of list
-        if not currNode.nextNode:
+        if not currNode.next:
             self.tail = newNode
 
         # redirect two pointers to newNode
-        newNode.nextNode = currNode.nextNode
-        currNode.nextNode = newNode
+        newNode.next = currNode.next
+        currNode.next = newNode
 
         return newNode
 
@@ -104,24 +104,24 @@ class SinglyLinkedList:
 
         # init two pointers to traverse
         trav1 = self.head
-        trav2 = self.head.nextNode
+        trav2 = self.head.next
 
         # shift both nodes along until trav2.value = positionValue
         while trav2 and trav2.value != positionValue:
-            trav1 = trav1.nextNode
-            trav2 = trav2.nextNode
+            trav1 = trav1.next
+            trav2 = trav2.next
 
         # no positionValue found
         if not trav2:
             return None
 
         # edge case, removed last node
-        if not trav2.nextNode:
+        if not trav2.next:
             self.tail = trav1
 
         # redirect trav1 pointer
         removedNode = trav2
-        trav1.nextNode = trav2.nextNode
+        trav1.next = trav2.next
 
         return removedNode
 
