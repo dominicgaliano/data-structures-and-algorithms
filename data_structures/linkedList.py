@@ -148,6 +148,120 @@ class SinglyLinkedList:
         return removedNode
 
 
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def __str__(self):
+        stringOutput = ""
+
+        # traverse list and print all values
+        currNode = self.head
+        i = 0
+        while currNode:
+            stringOutput += f"{currNode.value} "
+            currNode = currNode.next
+            i += 1
+
+        return stringOutput.strip()
+
+    def append(self, value):
+        """Append new node with value 'value' at end of list"""
+        newNode = BidirectionalNode(value)
+
+        # change tail next pointer (if exists)
+        if self.tail:
+            self.tail.next = newNode
+
+        # change prev pointer of newNode and save as new tail
+        newNode.prev = self.tail
+        self.tail = newNode
+
+        # edge case, first addition to list
+        if not self.head:
+            self.head = newNode
+
+        return newNode
+
+    def prepend(self, value):
+        """Prepend node with new value to beginning of list"""
+        newNode = BidirectionalNode(value)
+        newNode.next = self.head
+
+        if self.head is not None:
+            self.head.prev = newNode
+
+        # edge case, empty list
+        if self.tail is None:
+            self.tail = newNode
+
+        self.head = newNode
+
+        return newNode
+
+    def insertAt(self, positionValue, newValue):
+        """Insert node with newValue before first node with value
+        positionValue. Returns newly created Node if successful"""
+
+        # if no nodes in list, return False
+        if not self.head:
+            return None
+
+        # traverse list until one node before node with positionValue
+        currNode = self.head
+        while currNode.next and currNode.next.value != positionValue:
+            currNode = currNode.next
+
+        # if end of list reached, return None
+        if not currNode.next:
+            return None
+
+        newNode = Node(newValue)
+
+        # edge case, inserting at end of list
+        if not currNode.next:
+            self.tail = newNode
+
+        # redirect two pointers to newNode
+        newNode.next = currNode.next
+        currNode.next = newNode
+
+        return newNode
+
+    def deleteAt(self, positionValue):
+        """
+        Delete first node with positionValue, returns deleted node if
+        successful and None if unsuccessful.
+        """
+        # edge case, empty list
+        if not self.head:
+            return None
+
+        # init two pointers to traverse
+        trav1 = self.head
+        trav2 = self.head.next
+
+        # shift both nodes along until trav2.value = positionValue
+        while trav2 and trav2.value != positionValue:
+            trav1 = trav1.next
+            trav2 = trav2.next
+
+        # no positionValue found
+        if not trav2:
+            return None
+
+        # edge case, removed last node
+        if not trav2.next:
+            self.tail = trav1
+
+        # redirect trav1 pointer
+        removedNode = trav2
+        trav1.next = trav2.next
+
+        return removedNode
+
+
 def main():
     # singly linked list demo
     # generate dummy data and insert
