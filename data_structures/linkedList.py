@@ -64,6 +64,8 @@ class SinglyLinkedList:
         if not self.head:
             self.head = newNode
 
+        return newNode
+
     def insertAt(self, positionValue, newValue):
         """Insert node with newValue before first node with value
         positionValue. Returns newly created Node if successful"""
