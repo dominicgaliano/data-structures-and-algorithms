@@ -10,9 +10,10 @@ class TestSinglyLinkedListMethods(unittest.TestCase):
         testList.append(10)
         self.assertEqual(str(testList), "10 10 10")
 
-    def test_append_change_tail(self):
+    def test_append_change_head_tail(self):
         testList = SinglyLinkedList()
         insertedNode = testList.append(1)
+        self.assertEqual(insertedNode, testList.head)
         self.assertEqual(insertedNode, testList.tail)
 
     def test_insertAt(self):
