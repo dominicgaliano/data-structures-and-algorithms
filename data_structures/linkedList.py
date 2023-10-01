@@ -131,13 +131,24 @@ class SinglyLinkedList:
         trav1 = self.head
         trav2 = self.head.next
 
+        # edge case, removing fist node
+        if trav1.value == positionValue:
+            self.head = trav1.next
+            if self.tail == trav1:
+                self.tail = None
+            return trav1
+
         # shift both nodes along until trav2.value = positionValue
         while trav2 and trav2.value != positionValue:
             trav1 = trav1.next
             trav2 = trav2.next
 
-        # no positionValue found
+        # no positionValue found, or list is one element long
         if not trav2:
+            if trav1.value == positionValue:
+                self.head = None
+                self.tail = None
+                return trav1
             return None
 
         # edge case, removed last node
