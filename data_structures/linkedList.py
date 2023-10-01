@@ -215,13 +215,8 @@ class DoublyLinkedList:
 
         newNode = Node(newValue)
 
-        # edge case, inserting at end of list
-        if not currNode.next:
-            self.tail = newNode
-
-        # redirect two pointers to newNode
-        newNode.next = currNode.next
-        currNode.next = newNode
+        # point newNode prev and next to correct nodes
+        newNode.prev = currentNode
 
         return newNode
 

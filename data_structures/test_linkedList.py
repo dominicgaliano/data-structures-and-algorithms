@@ -30,6 +30,12 @@ class TestSinglyLinkedListMethods(unittest.TestCase):
         testList.insertAt(1, 2)
         self.assertEqual(str(testList), "")
 
+    def test_insertAt_beginning(self):
+        testList = SinglyLinkedList()
+        testList.append(2)
+        testList.insertAt(2, 1)
+        self.assertEqual(str(testList), "1 2")
+
     def test_insertAt_notFound(self):
         testList = SinglyLinkedList()
         testList.append(1)
@@ -102,6 +108,12 @@ class TestDoublyLinkedListMethods(unittest.TestCase):
         testList = DoublyLinkedList()
         testList.insertAt(1, 2)
         self.assertEqual(str(testList), "")
+
+    def test_insertAt_beginning(self):
+        testList = DoublyLinkedList()
+        testList.append(2)
+        testList.insertAt(2, 1)
+        self.assertEqual(str(testList), "1 2")
 
     def test_insertAt_notFound(self):
         testList = DoublyLinkedList()
