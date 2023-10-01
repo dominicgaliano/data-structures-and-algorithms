@@ -51,6 +51,29 @@ class TestSinglyLinkedListMethods(unittest.TestCase):
         self.assertEqual(deletedNode, None)
         self.assertEqual(str(testList), "")
 
+    def test_deleteAt_notFound(self):
+        testList = SinglyLinkedList()
+        testList.append(1)
+        testList.append(2)
+        testList.append(3)
+        deletedNode = testList.deleteAt(10)
+        self.assertEqual(deletedNode, None)
+        self.assertEqual(str(testList), "1 2 3")
+
+    def test_prepend(self):
+        testList = SinglyLinkedList()
+        testList.prepend(1)
+        testList.prepend(2)
+        insertedNode = testList.prepend(3)
+        self.assertEqual(insertedNode, testList.head)
+        self.assertEqual(str(testList), "3 2 1")
+
+    def test_prepend_change_head_tail(self):
+        testList = SinglyLinkedList()
+        insertedNode = testList.prepend(1)
+        self.assertEqual(insertedNode, testList.head)
+        self.assertEqual(insertedNode, testList.tail)
+
 
 if __name__ == "__main__":
     unittest.main()
