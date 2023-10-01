@@ -194,8 +194,8 @@ class TestDoublyLinkedListMethods(unittest.TestCase):
         testList = DoublyLinkedList()
         testList.append(1)
         testList.removeFirst()
-        self.assertEqual(testList.head.value, None)
-        self.assertEqual(testList.tail.value, None)
+        self.assertEqual(testList.head, None)
+        self.assertEqual(testList.tail, None)
 
 
 if __name__ == "__main__":
