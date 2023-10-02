@@ -2,7 +2,7 @@ import unittest
 from queue import Queue
 
 
-class TestSinglyLinkedListMethods(unittest.TestCase):
+class TestQueueMethods(unittest.TestCase):
     def test_enqueue(self):
         q = Queue()
         q.enqueue(1)

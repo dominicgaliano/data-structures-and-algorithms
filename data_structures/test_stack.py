@@ -2,7 +2,7 @@ import unittest
 from stack import Stack
 
 
-class TestSinglyLinkedListMethods(unittest.TestCase):
+class TestStackMethods(unittest.TestCase):
     def test_push(self):
         stack = Stack()
         stack.push(1)
