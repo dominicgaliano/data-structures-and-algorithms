@@ -152,6 +152,47 @@ Creation:
 - Union operation:
   - To unify two elements, find which are the root nodes for each component and if the root nodes are different make one of the root nodes be the parent of the other.
 
+### Binary Trees (BT) and Binary Search Trees (BST)
+
+- A tree is an undirected graph which satisfies any of the following:
+
+  - An acyclic connected graph.
+  - A connected graph with N nodes and N-1 edges.
+  - A graph in which any two vertices are connected by _exactly_ one path.
+
+- A binary tree is a tree in which every node has at most two children.
+- A binary search tree is a binary tree that satisfies the BST invariant:
+  - Left tree has smaller elements, right tree has larger elements
+
+Usage:
+
+- BST:
+  - Implementation of some map and set ADTs
+  - Red Black Trees
+  - AVL Trees
+  - Splay Trees
+  - etc.
+- Used in the implementation of of binary heaps
+- Syntax trees (used by compilers and calculators)
+- Treap - a probabilistic DS (uses a randomized BST)
+
+BST:
+
+| Operation | Avg       | Worst |
+| --------- | --------- | ----- |
+| Insert    | O(log(n)) | O(n)  |
+| Delete    | O(log(n)) | O(n)  |
+| Remove    | O(log(n)) | O(n)  |
+| Search    | O(log(n)) | O(n)  |
+
+Adding elements to a BST:
+
+- compare new element to root
+- recurse down left tree (< case)
+- recurse down right tree (> case)
+- handle finding a duplicate value (= case)
+- create a new node (found a null leaf)
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal
