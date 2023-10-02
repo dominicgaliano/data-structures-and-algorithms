@@ -119,6 +119,39 @@ Using a hash table to help optimize operations does take up linear space and als
     - We can maintain a set or tree set of indexes for which a particular node value (key) maps to.
     - Have to track movement of nodes during bubble-up and bubble-down in the index tree.
 
+### Disjoint Set (Union Find)
+
+- Union find is a data structure that keeps track of elements which are split into one or more disjoint sets.
+- It has two primary operations: find and union.
+
+Usage:
+
+- Kruskal's minimum spanning tree algorithm
+- Grid percolation
+- Network Connectivity
+- Least common ancestor in trees
+- Image processing
+
+| Operation          | Complexity |
+| ------------------ | ---------- |
+| Construction       | O(n)       |
+| Union              | α(n)       |
+| Find               | α(n)       |
+| Get component size | α(n)       |
+| Check if connected | α(n)       |
+| Count components   | O(1)       |
+
+α(n) = amortized constant time
+
+Creation:
+
+- First construct a **bijection** (a mapping) between your objects and integers in the range [0, n).
+  - Not necessary in general, but will allow us to construct an array-based union find.
+- Find operation:
+  - To find which component a particular element belongs to, find the root of that component by following the parents nodes until a self loop is reached (a node who's parent node is itself).
+- Union operation:
+  - To unify two elements, find which are the root nodes for each component and if the root nodes are different make one of the root nodes be the parent of the other.
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal
@@ -139,3 +172,16 @@ While Q in not empty Do
        neighbor.visited = true
        Q.enqueue(neighbor)
 ```
+
+### Kruskal's Minimum Spanning Tree
+
+- Given a graph, G = (V, E), we want to find a **Minimum Spanning Tree** in the graph (it may not be unique).
+- A MST is a subset of the edges that connect all vertices in the graph with the minimal total edge cost.
+
+Steps:
+
+1. Sort edges by ascending edge weight
+2. Walk through the sorted edges and look at the two vertices that the edge belongs to.
+   - If the vertices are already unified, we do not include this edge
+   - If the vertices are not already unified, we include this edge and unify the vertices
+3. The algorithm terminates when every edge has been processed or all the vertices have been unified.
