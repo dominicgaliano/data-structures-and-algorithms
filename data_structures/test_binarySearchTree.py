@@ -34,7 +34,9 @@ class TestBSTMethods(unittest.TestCase):
 
     def test_remove(self):
         self.bst.remove(8)
-        # some test here
+        self.assertEqual(self.bst.size(), 9)
+        self.assertFalse(self.bst.contains(8))
+        self.assertEqual(self.bst.height(), 5)
 
     def test_findMin(self):
         self.assertEqual(self.bst.findMin(), 1)
