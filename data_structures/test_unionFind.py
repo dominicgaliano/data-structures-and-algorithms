@@ -6,8 +6,8 @@ class TestUnionFindMethods(unittest.TestCase):
     def test_unionFind_init(self):
         elements = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
         uf = UnionFind(elements)
-        self.assertEqual(str(uf), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-        self.assertEqual(uf.components, 10)
+        self.assertEqual(uf.arr, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+        self.assertEqual(uf.components(), 10)
 
     def test_unionFind_init_set(self):
         elements = ("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
@@ -19,7 +19,7 @@ class TestUnionFindMethods(unittest.TestCase):
         uf = UnionFind(elements)
         uf.unify("A", "B")
         self.assertEqual(uf.components(), 9)
-        self.assertEqual(uf.componentsSize("A"), 2)
+        self.assertEqual(uf.componentSize("A"), 2)
 
     def test_unionFind_find(self):
         elements = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]

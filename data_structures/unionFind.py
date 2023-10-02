@@ -12,14 +12,15 @@ class UnionFind:
         self.arr = [i for i in range(len(elements))]
         i = 0
         for element in elements:
-            self.map["element"] = i
+            self.map[element] = i
             i += 1
-        self.numComponents = i - 1
+        self.numComponents = i
 
     def __str__(self):
         return str(self.arr)
 
     def unify(self, A, B):
+        """Combines components containing A and B"""
         rootA = self.find(A)
         rootB = self.find(B)
 
@@ -28,7 +29,8 @@ class UnionFind:
             self.numComponents -= 1
 
     def find(self, A):
-        i = self.map(A)
+        """Returns index of parent of element 'A'"""
+        i = self.map[A]
         parent = self.arr[i]
 
         while i != parent:
@@ -38,25 +40,26 @@ class UnionFind:
         return i
 
     def connected(self, A, B):
+        """Returns true if A and B are in the same component"""
         if A not in self.map or B not in self.map:
             raise KeyError
 
         return self.find(A) == self.find(B)
 
     def componentSize(self, A):
+        """Returns size of component containing element 'A'"""
         if A not in self.map:
             raise KeyError
 
-        n = 0
-        i = self.map[A]
-        parent = self.arr[i]
+        A_parent = self.find(A)
+        count = 0
+        for element in self.map.keys():
+            parent = self.find(element)
+            if parent == A_parent:
+                count += 1
 
-        while i != parent:
-            n += 1
-            i = parent
-            parent = self.arr[i]
-
-        return n
+        return count
 
     def components(self):
+        """Returns total number of components"""
         return self.numComponents
