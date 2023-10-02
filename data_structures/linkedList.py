@@ -172,6 +172,9 @@ class DoublyLinkedList:
 
         return stringOutput.strip()
 
+    def isEmpty(self):
+        return self.head is None
+
     def append(self, value):
         """Append new node with value 'value' at end of list"""
         newNode = BidirectionalNode(value)

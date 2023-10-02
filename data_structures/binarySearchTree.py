@@ -1,4 +1,5 @@
 from nodes import BinaryTreeNode
+from queue import Queue
 
 
 class BST:
@@ -126,4 +127,90 @@ class BST:
         )
 
     def traverse(self, order):
-        pass
+        if order == "preorder":
+            self.preorder(self.root)
+        elif order == "inorder":
+            self.inorder(self.root)
+        elif order == "postorder":
+            self.postorder(self.root)
+        elif order == "levelorder":
+            self.levelorder(self.root)
+        else:
+            raise ValueError
+
+    def preorder(self, node):
+        if node is None:
+            return
+        print(node.value)
+        self.preorder(node.left)
+        self.preorder(node.right)
+
+    def inorder(self, node):
+        if node is None:
+            return
+        self.inorder(node.left)
+        print(node.value)
+        self.inorder(node.right)
+
+    def postorder(self, node):
+        if node is None:
+            return
+        self.postorder(node.left)
+        self.postorder(node.right)
+        print(node.value)
+
+    def levelorder(self, node):
+        # Let Q by a Queue
+        # Q.enqueue(starting_node)
+        # starting_node.visited = true
+
+        # While Q in not empty Do
+
+        # node = Q.dequeue()
+
+        # For neighbor in neighbors(node):
+        #     If neighbor has not been visited:
+        #     neighbor.visited = true
+        #     Q.enqueue(neighbor)
+        q = Queue()
+        q.enqueue(node)
+        visited = set()
+        visited.add(node)
+
+        while not q.isEmpty():
+            node = q.dequeue()
+            print(node.value)
+
+            children = [node.left, node.right]
+            for child in children:
+                if child and child not in visited:
+                    visited.add(child)
+                    q.enqueue(child)
+
+
+def main():
+    bst = BST()
+    bst.add(11)
+    bst.add(10)
+    bst.add(2)
+    bst.add(1)
+    bst.add(13)
+    bst.add(8)
+    bst.add(13)
+    bst.add(12)
+    bst.add(15)
+    bst.add(12)
+    bst.add(9)
+    bst.add(3)
+    bst.traverse("preorder")
+    print("------")
+    bst.traverse("inorder")
+    print("------")
+    bst.traverse("postorder")
+    print("------")
+    bst.traverse("levelorder")
+    print("------")
+
+
+if __name__ == "__main__":
+    main()

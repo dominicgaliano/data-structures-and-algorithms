@@ -208,6 +208,47 @@ Removing elements from BST:
   - Node to remove has both left and right subtree
     - Successor can either be the largest value of the left subtree or smallest value of the right subtree
 
+Traversal
+
+- preorder
+
+  - prints before recursive calls
+
+  ```pseudocode
+  preorder(node):
+    if node == null: Return
+    print(node.value)
+    preorder(node.left)
+    preorder(node.right)
+  ```
+
+- inorder
+
+  - prints between recursive calls
+
+  ```pseudocode
+  inorder(node):
+    if node == null: Return
+    print(node.value)
+    inorder(node.left)
+    inorder(node.right)
+  ```
+
+- postorder
+
+  - prints after recursive calls
+
+  ```pseudocode
+  postorder(node):
+  if node == null: Return
+  print(node.value)
+  postorder(node.left)
+  postorder(node.right)
+  ```
+
+- level order
+  - performed using BFS
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal

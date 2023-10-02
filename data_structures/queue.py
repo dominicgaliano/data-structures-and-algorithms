@@ -8,6 +8,9 @@ class Queue:
     def __str__(self):
         return str(self.q)
 
+    def isEmpty(self):
+        return self.q.isEmpty()
+
     def enqueue(self, value):
         self.q.append(value)
 
