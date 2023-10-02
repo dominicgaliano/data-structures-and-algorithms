@@ -24,7 +24,7 @@ class TestPriorityQueueMethods(unittest.TestCase):
         pq.add(9)
         pq.add(8)
         pq.add(7)
-        self.assertEqual(pq.peak(), 7)
+        self.assertEqual(pq.peek(), 7)
 
     def test_poll(self):
         pq = PQueue()
@@ -36,7 +36,7 @@ class TestPriorityQueueMethods(unittest.TestCase):
         self.assertEqual(element, 7)
         self.assertEqual(pq.heap, [8, 10, 9])
 
-    def test_removeAt(self):
+    def test_removeAt_internal(self):
         pq = PQueue()
         pq.add(1)
         pq.add(2)
@@ -48,11 +48,24 @@ class TestPriorityQueueMethods(unittest.TestCase):
         pq.add(8)
         pq.add(9)
         # [1,2,3,4,5,6,7,8,9]
-        pq.removeAt(3)
+        removed = pq.removeAt(3)
         # [1,2,3,none,5,6,7,8,9]
         # [1,2,3,9,5,6,7,8]
-        # [1,2,3,7,5,6,9,8]
-        self.assertEqual(pq.heap, [1, 2, 3, 7, 5, 6, 9, 8])
+        # [1,2,3,8,5,6,7,9]
+        self.assertEqual(pq.heap, [1, 2, 3, 8, 5, 6, 7, 9])
+        self.assertEqual(removed, 4)
+
+    def test_removeAt_leaf(self):
+        pq = PQueue()
+        pq.add(3)
+        pq.add(5)
+        pq.add(7)
+        pq.add(9)
+        pq.add(11)
+        pq.add(13)
+        removed = pq.removeAt(4)
+        self.assertEqual(pq.heap, [3, 5, 7, 9, 13])
+        self.assertEqual(removed, 11)
 
 
 if __name__ == "__main__":

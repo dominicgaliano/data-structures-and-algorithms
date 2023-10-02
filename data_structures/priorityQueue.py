@@ -34,7 +34,31 @@ class PQueue:
         return False
 
     def removeAt(self, index):
-        pass
+        if index >= self.size():
+            raise IndexError("index out of bounds")
+
+        # need to deal with case of one element in heap
+        if self.heapSize == 1:
+            self.clear()
+            return
+
+        self.swap(index, self.size() - 1)
+        removedElement = self.heap.pop()
+        self.heapSize -= 1
+
+        left = 2 * index + 1
+        right = 2 * index + 2
+        parent = index // 2
+        if index == 0:
+            self.sink(index)
+        elif self.less(index, parent):
+            self.swim(index)
+        elif (right < self.heapSize and self.less(right, index)) or (
+            left < self.heapSize and self.less(left, index)
+        ):
+            self.sink(index)
+
+        return removedElement
 
     def add(self, element):
         if element is None:
@@ -49,11 +73,31 @@ class PQueue:
         parent = (k - 1) // 2
         while k > 0 and self.less(k, parent):
             # bubble up
-            self.heap[k], self.heap[parent] = self.heap[parent], self.heap[k]
+            self.swap(k, parent)
             k = parent
 
             # recalculate parent
             parent = (k - 1) // 2
+
+    def sink(self, k):
+        # top down node sink, O(log(n))
+        # ties sink to left
+        while True:
+            left = 2 * k + 1
+            right = 2 * k + 2
+            smallest = left
+
+            if right < self.heapSize and self.less(right, left):
+                smallest = right
+
+            if left >= self.heapSize or self.less(k, smallest):
+                break
+
+            self.swap(smallest, k)
+            k = smallest
+
+    def swap(self, i, j):
+        self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
 
     def less(self, i, j):
         return self.heap[i] <= self.heap[j]
