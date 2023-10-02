@@ -46,17 +46,30 @@ class PQueue:
         removedElement = self.heap.pop()
         self.heapSize -= 1
 
-        left = 2 * index + 1
-        right = 2 * index + 2
-        parent = index // 2
-        if index == 0:
-            self.sink(index)
-        elif self.less(index, parent):
+        # WilliamFiset implementation:
+        if index == self.heapSize:
+            return removedElement
+
+        element = self.heap[index]
+        # try sinking
+        self.sink(index)
+
+        # if sinking did not work, try swimming
+        if self.heap[index] == element:
             self.swim(index)
-        elif (right < self.heapSize and self.less(right, index)) or (
-            left < self.heapSize and self.less(left, index)
-        ):
-            self.sink(index)
+
+        # My original implementation:
+        # left = 2 * index + 1
+        # right = 2 * index + 2
+        # parent = index // 2
+        # if index == 0:
+        #     self.sink(index)
+        # elif self.less(index, parent):
+        #     self.swim(index)
+        # elif (right < self.heapSize and self.less(right, index)) or (
+        #     left < self.heapSize and self.less(left, index)
+        # ):
+        #     self.sink(index)
 
         return removedElement
 
