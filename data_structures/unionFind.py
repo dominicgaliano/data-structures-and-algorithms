@@ -15,8 +15,20 @@ class UnionFind:
     def __str__(self):
         return str(self.arr)
 
-    def union(self, A, B):
+    def unify(self, A, B):
         pass
 
     def find(self, A):
+        pass
+
+    def connected(self, A, B):
+        pass
+
+    def componentSize(self, A):
+        pass
+
+    def size(self):
+        pass
+
+    def components(self):
         pass

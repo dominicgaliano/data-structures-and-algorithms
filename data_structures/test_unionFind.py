@@ -16,7 +16,7 @@ class TestUnionFindMethods(unittest.TestCase):
     def test_unionFind_union(self):
         elements = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
         uf = UnionFind(elements)
-        uf.union("A", "B")
+        uf.unify("A", "B")
         pass
 
 
