@@ -11,24 +11,49 @@ class UnionFind:
         for element in elements:
             self.map["element"] = i
             i += 1
+        self.numComponents = i - 1
 
     def __str__(self):
         return str(self.arr)
 
     def unify(self, A, B):
-        pass
+        rootA = self.find(A)
+        rootB = self.find(B)
+
+        if rootA != rootB:
+            self.arr[rootA] = self.arr[rootB]
+            self.numComponents -= 1
 
     def find(self, A):
-        pass
+        i = self.map(A)
+        parent = self.arr[i]
+
+        while i != parent:
+            i = parent
+            parent = self.arr[i]
+
+        return i
 
     def connected(self, A, B):
-        pass
+        if A not in self.map or B not in self.map:
+            raise KeyError()
+
+        return self.find(A) == self.find(B)
 
     def componentSize(self, A):
-        pass
+        if A not in self.map:
+            raise KeyError()
 
-    def size(self):
-        pass
+        n = 0
+        i = self.map[A]
+        parent = self.arr[i]
+
+        while i != parent:
+            n += 1
+            i = parent
+            parent = self.arr[i]
+
+        return n
 
     def components(self):
-        pass
+        return self.numComponents
