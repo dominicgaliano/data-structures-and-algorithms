@@ -101,3 +101,11 @@ class PQueue:
 
     def less(self, i, j):
         return self.heap[i] <= self.heap[j]
+
+    def remove(self, element):
+        if element is None:
+            raise TypeError("Element cannot be None")
+
+        for i in range(self.size()):
+            if self.heap[i] == element:
+                return self.removeAt(i)
