@@ -12,7 +12,7 @@ class BST:
         pass
 
     def add(self, elem):
-        pass
+        self.addRecursively(self.root, elem)
 
     # private function to recursively add element
     def addRecursively(self, node, elem):
