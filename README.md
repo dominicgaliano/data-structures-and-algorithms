@@ -88,7 +88,36 @@ Usage:
 | Naive contains                                  | O(n)            |
 | Contains check with help of a hash table\*      | O(1)            |
 
-- Using a hash table to help optimize operations does take up linear space and also adds some overhead to the binary heap implementation.
+Using a hash table to help optimize operations does take up linear space and also adds some overhead to the binary heap implementation.
+
+#### Binary Heap:
+
+- Binary Heap is a binary tree that supports the heap invariant. In a binary tree every node has exactly two children.
+- A complete binary tree is a tree in which at every level, except possible the last is completely filled and all the nodes are as far left as possible.
+- Binary Heap Representation can be represented using an array (fast) or pointer-node model.
+
+- For array representation:
+  - let i be the parent node index.
+  - left child index: 2i + 1
+  - right child index: 2i + 2
+  - (zero based)
+- Adding Elements to Binary Heap
+  - Add element to end of heap
+  - "Bubble-up" until heap invariant is satisfied
+- Removing Root elements from Binary Heap
+  - Always want to remove the root, it's called polling and no searching is required.
+  - Replace root with element at end of binary heap
+  - "Bubble-down" by swapping with smaller child (for min heap) (left child in case of tie) until heap invariant satisfied.
+- Naive removal from Binary Heap
+  - Scan linearly for desired element
+  - Remove and swap with element at end of binary heap
+  - "Bubble-up" or "Bubble-down" as necessary to satisfy heap invariant.
+- Removing Elements from Binary Heap in O(log(n))
+  - Using Hashtable to lookup where the node is indexed at (constant time)
+  - Caveat (what if there are two or more nodes with the same value or hash)?
+    - Instead of mapping one value to one position, we will map one value to multiple positions
+    - We can maintain a set or tree set of indexes for which a particular node value (key) maps to.
+    - Have to track movement of nodes during bubble-up and bubble-down in the index tree.
 
 ## Algorithms
 
