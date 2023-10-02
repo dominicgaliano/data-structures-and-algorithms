@@ -63,6 +63,33 @@ Usage:
 | Removal   | O(n)            |
 | Is Empty  | O(1)            |
 
+### Priority Queue
+
+Abstract Data Type (ADT) that operates similar to a normal queue expect that each element has a certain priority. The priority of the elements in the priority queue determines the order in which elements are removed from the PQ.
+
+Uses a heap. A heap is a tree based DS that satisfies the heap invariant (also called heap property): If A is a parent node of B then A is ordered with respect to B for all nodes A, B in the heap.
+
+Usage:
+
+- Used in certain implementations of Dijkstra's Shortest Path algorithm.
+- Anytime you need to dynamically fetch the 'next best' or 'next worst' element.
+- Used in Huffman coding (which is often used for lossless data compression).
+- Best First Search (BFS) algorithms such as A\* use PQs to continuously grab the next most promising node.
+- Used by Minimum Spanning Tree (MST) algorithms.
+
+| Operation                                       | Time Complexity |
+| ----------------------------------------------- | --------------- |
+| Binary Heap Construction                        | O(n)            |
+| Polling                                         | O(log(n))       |
+| Peeking                                         | O(1)            |
+| Adding                                          | O(log(n))       |
+| Naive Removing                                  | O(n)            |
+| Advanced removing with help from a hash table\* | O(log(n))       |
+| Naive contains                                  | O(n)            |
+| Contains check with help of a hash table\*      | O(1)            |
+
+- Using a hash table to help optimize operations does take up linear space and also adds some overhead to the binary heap implementation.
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal
