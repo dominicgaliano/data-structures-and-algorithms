@@ -30,12 +30,21 @@ class UnionFind:
 
     def find(self, A):
         """Returns index of parent of element 'A'"""
+        root = self.map[A]
+
+        while root != self.arr[root]:
+            root = self.arr[root]
+
+        # path compression
+        # root is now found, now travel from A to root again
+        # pointing the nodes reached to the root
         i = self.map[A]
+        while i != root:
+            nextElement = self.arr[i]
+            self.arr[i] = root
+            i = nextElement
 
-        while i != self.arr[i]:
-            i = self.arr[i]
-
-        return i
+        return root
 
     def connected(self, A, B):
         """Returns true if A and B are in the same component"""
