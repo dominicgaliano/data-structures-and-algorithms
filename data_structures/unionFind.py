@@ -31,11 +31,9 @@ class UnionFind:
     def find(self, A):
         """Returns index of parent of element 'A'"""
         i = self.map[A]
-        parent = self.arr[i]
 
-        while i != parent:
-            i = parent
-            parent = self.arr[i]
+        while i != self.arr[i]:
+            i = self.arr[i]
 
         return i
 
