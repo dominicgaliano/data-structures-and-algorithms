@@ -3,7 +3,10 @@ class UnionFind:
         try:
             iter(elements)
         except TypeError as te:
-            print(elements, "is not iterable")
+            raise TypeError
+
+        if len(elements) <= 0:
+            raise IndexError
 
         self.map = dict()
         self.arr = [i for i in range(len(elements))]
@@ -36,13 +39,13 @@ class UnionFind:
 
     def connected(self, A, B):
         if A not in self.map or B not in self.map:
-            raise KeyError()
+            raise KeyError
 
         return self.find(A) == self.find(B)
 
     def componentSize(self, A):
         if A not in self.map:
-            raise KeyError()
+            raise KeyError
 
         n = 0
         i = self.map[A]
