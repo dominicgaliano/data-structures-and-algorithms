@@ -35,33 +35,62 @@ class BST:
         return node
 
     def remove(self, elem):
-        pass
+        if self.contains(elem):
+            self.root = self.removeRecursively(self.root, elem)
+            self.nodeCount -= 1
+            return True
+        return False
 
     # private function to recursively remove element
     def removeRecursively(self, node, elem):
-        pass
-
-    def findMin(self):
-        if self.root is None:
+        if node is None:
             return None
 
+        # search tree for node:
+        # element expected down left branch
+        if elem < node.value:
+            node.left = self.removeRecursively(node.left, elem)
+
+        # element expected down right branch
+        elif elem > node.value:
+            node.right = self.removeRecursively(node.right, elem)
+
+        else:
+            # node for removal found
+            # determine case
+            left = node.left
+            right = node.right
+            # no subtrees or only right subtree (case 1 and 3)
+            if not left:
+                return right
+            # left subtree exists (case 2)
+            if not right:
+                return left
+
+            # case 4 (has left and right subtrees)
+            # find largest value in left subtree
+            largestLeft = self.findMax(left)
+
+            # swap data
+            node.value = largestLeft.value
+
+            node.left = self.removeRecursively(node.left, largestLeft.value)
+
+        return node
+
+    def findMin(self, node):
         # keep going left
-        node = self.root
         while node.left:
             node = node.left
 
-        return node.value
+        return node
 
-    def findMax(self):
-        if self.root is None:
-            return None
-
+    def findMax(self, node):
         # keep going right
-        node = self.root
         while node.right:
             node = node.right
 
-        return node.value
+        return node
 
     def contains(self, elem):
         return self.containsRecursively(self.root, elem)

@@ -38,12 +38,6 @@ class TestBSTMethods(unittest.TestCase):
         self.assertFalse(self.bst.contains(8))
         self.assertEqual(self.bst.height(), 5)
 
-    def test_findMin(self):
-        self.assertEqual(self.bst.findMin(), 1)
-
-    def test_findMax(self):
-        self.assertEqual(self.bst.findMax(), 15)
-
     def test_contains(self):
         self.assertFalse(self.bst.contains(0))
         self.assertTrue(self.bst.contains(15))

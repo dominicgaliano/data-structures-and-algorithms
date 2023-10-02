@@ -193,6 +193,21 @@ Adding elements to a BST:
 - handle finding a duplicate value (= case)
 - create a new node (found a null leaf)
 
+Removing elements from BST:
+
+1. Find the element we wish to remove (if it exists)
+2. Replace the node we want to remove with it's successor (if any) to maintain BST invariant.
+
+- 4 removal cases:
+  - Node to remove is leaf node
+    - Can easily just remove
+  - Node to remove has only left subtree
+    - Left subtree becomes new successor of node's parent
+  - Node to remove has only right subtree
+    - Right subtree becomes new successor of node's parent
+  - Node to remove has both left and right subtree
+    - Successor can either be the largest value of the left subtree or smallest value of the right subtree
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal
