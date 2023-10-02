@@ -28,7 +28,9 @@ class TestBSTMethods(unittest.TestCase):
 
     def test_add(self):
         self.bst.add(7)
-        #  some test here
+        self.assertEqual(self.bst.size(), 11)
+        self.assertTrue(self.bst.contains(7))
+        self.assertEqual(self.bst.height(), 6)
 
     def test_remove(self):
         self.bst.remove(8)
