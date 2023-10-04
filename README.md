@@ -324,6 +324,18 @@ DFS(G,v)   ( v is the vertex where the search starts )
   - Divide phase: list of items is repeatedly divided until each subset consists of only one item
   - Conquer phase: sublists are combined together in a sorted manner by comparing the first elements of the sublists and merging them back together in order
 
+### Quick Sort
+
+- Average time complexity: O(nlog(n))
+- Worst case time complexity O(n^2)
+- Algorithm
+  - If range has fewer than two elements, return. (no sorting required)
+  - Select a pivot value (several methods to pick one)
+    - If picking first or last, you have O(n^2) like time complexity when partially sorted or reverse sorted
+    - Can choose median, middle value in array, random pivot, or "median-of-three" (median of mid, lo, and high)
+  - Partition the range: reorder its elements, while determining a point of division, so that all elements with values less than the pivot come before the division, while all elements with values greater than the pivot come after it.
+  - Recursively apply quicksort to the two divisions created by the pivot
+
 ### Kruskal's Minimum Spanning Tree
 
 - Given a graph, G = (V, E), we want to find a **Minimum Spanning Tree** in the graph (it may not be unique).
