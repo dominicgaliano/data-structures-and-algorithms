@@ -286,7 +286,7 @@ Let Q by a Queue
 Q.enqueue(starting_node)
 starting_node.visited = true
 
-While Q in not empty Do
+While Q is not empty Do
 
   node = Q.dequeue()
 
@@ -294,6 +294,26 @@ While Q in not empty Do
     If neighbor has not been visited:
        neighbor.visited = true
        Q.enqueue(neighbor)
+```
+
+### Depth First Search (DFS) Graph Traversal
+
+Implemented using a stack.
+
+```psuedocode
+DFS(G,v)   ( v is the vertex where the search starts )
+      Stack S := {};   ( start with an empty stack )
+      for each vertex u, set visited[u] := false;
+      push S, v;
+      while (S is not empty) do
+        u := pop S;
+        if (not visited[u]) then
+            visited[u] := true;
+            for each unvisited neighbour w of u
+              push S, w;
+        end if
+      end while
+  END DFS()
 ```
 
 ### Kruskal's Minimum Spanning Tree
