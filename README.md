@@ -249,6 +249,32 @@ Traversal
 - level order
   - performed using BFS
 
+### Hash Table
+
+_Basics not included for time sake._
+
+- Collision resolution strategies
+  - Separate Chaining
+    - maintains a data structure, usually a linked list, to hold all the different values with the same hash.
+  - Open addressing
+    - finds another place in the hash table for the object to go by offsetting it from the position it was hashed to.
+    - Key-value pairs are stored in the table itself, need to keep track of load factor.
+    - Load factor (α) = items in table / size of table
+      - Load factor threshold keeps lookups last, recreate larger hash table when load factor exceeded.
+    - Can find new address using linear probing, quadratic probing, double hashing, pseudo random number generator (RNG seeded with key), etc.
+    - Big issue if your probing sequence creates a cycle shorter than the table size (infinite looping).
+      - In general, this issue is avoided by using a probing function that produces a cycle of exactly length N (size of table)
+      - Linear Probing Requirement (P(x) = ax): Greatest Common Denomination (GCD) of N and a must be 1
+      -
+
+| Complexity | Avg    | Worst |
+| ---------- | ------ | ----- |
+| Insertion  | O(1)\* | O(n)  |
+| Removal    | O(1)\* | O(n)  |
+| Search     | O(1)\* | O(n)  |
+
+\*only true if you have a good **uniform hash function**
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal
