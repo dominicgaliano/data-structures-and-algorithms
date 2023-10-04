@@ -316,6 +316,14 @@ DFS(G,v)   ( v is the vertex where the search starts )
   END DFS()
 ```
 
+### Merge Sort
+
+- Average and worst case time complexity: O(nlog(n))
+- Space complexity: O(n) (in place possible with O(1) but more challenging to implement)
+- Two phases, divide and conquer phase
+  - Divide phase: list of items is repeatedly divided until each subset consists of only one item
+  - Conquer phase: sublists are combined together in a sorted manner by comparing the first elements of the sublists and merging them back together in order
+
 ### Kruskal's Minimum Spanning Tree
 
 - Given a graph, G = (V, E), we want to find a **Minimum Spanning Tree** in the graph (it may not be unique).
