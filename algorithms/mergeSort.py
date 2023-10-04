@@ -3,12 +3,15 @@ def mergeSort(lst):
     if len(lst) < 2:
         return lst
 
+    # divide
     lo, hi = 0, len(lst)
     mid = (hi - lo) // 2
     left, right = lst[:mid], lst[mid:]
 
+    # sort recursively
     left, right = mergeSort(left), mergeSort(right)
 
+    # combine
     left_i = 0
     right_i = 0
 
