@@ -275,6 +275,23 @@ _Basics not included for time sake._
 
 \*only true if you have a good **uniform hash function**
 
+### Fenwick Tree
+
+- A Fenwick Tree (also called binary index tree) is a data structure that supports sum range queries as well as setting static values in a static array and getting the value of the prefix sum up to some index efficiently.
+  - Unlike a regular array, a cell in a fenwick tree is responsible for other cells as well.
+  - The position of the Least Significant Bit (LSB) determines the range of responsibility that cell has to the cells below itself.
+  - Ex. Index 10 in binary is 1010. LSB is at position 2, so this index is responsible for 2^(2-1) = 2 cells below itself.
+  - Watch [this video](https://www.youtube.com/watch?v=RgITNht_f4Q&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=38) because its a bit hard to explain in markdown only.
+
+| Operation      | Complexity |
+| -------------- | ---------- |
+| Construction   | O(n)       |
+| Point Update   | O(log(n))  |
+| Range Sum      | O(log(n))  |
+| Range Update   | O(log(n))  |
+| Adding Index   | N/A        |
+| Removing Index | N/A        |
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal
