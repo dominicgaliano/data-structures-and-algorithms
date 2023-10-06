@@ -292,6 +292,13 @@ _Basics not included for time sake._
 | Adding Index   | N/A        |
 | Removing Index | N/A        |
 
+### Suffix Tree
+
+- A suffix is a non-empty substring at the end of a string
+  - Ex. All possible suffixes of HORSE are E, SE, RSE, ORSE, HORSE
+- A suffix array is an array containing all the sorted suffixes of a string
+  - It is actually just an array of indices, since there is not need to store the suffixes if you know the original string
+
 ## Algorithms
 
 ### Breadth First Search (BFS) Graph Traversal
