@@ -98,6 +98,15 @@ class TestPriorityQueueMethods(unittest.TestCase):
         self.assertEqual(pq.heap, [3, 5, 7, 9, 13])
         self.assertEqual(removed, 11)
 
+    def test_heapifyInefficient(self):
+        pq = PQueue()
+        pq.heapifyInefficient([13, 9, 4, 6, 1, 2, 3])
+        self.assertEqual(pq.sorted(), [1, 2, 3, 4, 6, 9, 13])
+
+    def test_heapify(self):
+        pq = PQueue()
+        pq.heapify([13, 9, 4, 6, 1, 2, 3])
+        self.assertEqual(pq.sorted(), [1, 2, 3, 4, 6, 9, 13])
 
 if __name__ == "__main__":
     unittest.main()

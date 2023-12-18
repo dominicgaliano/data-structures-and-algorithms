@@ -10,11 +10,34 @@ class PQueue:
         return self.heapSize == 0
 
     def clear(self):
+        val = self.heap[0]
         self.heap = []
+        self.heapSize = 0
+        return val
 
-    def heapify(self):
+    def heapify(self, lst):
         """O(n) efficient heap formation"""
-        raise NotImplementedError("Not implemented for time sake")
+        self.heap = lst.copy()
+        self.heapSize = len(lst)
+        for k in range(self.heapSize-1, -1, -1):
+            # swap k'th element with the smallest of it's children and itself
+            left = 2 * k + 1
+            right = 2 * k + 2
+            smallest = left
+
+            if right < self.heapSize and self.less(right, left):
+                smallest = right
+
+            if left >= self.heapSize or self.less(k, smallest):
+                smallest = k
+
+            # print(f"k={k} smallest={smallest} {self.heap} -> ", end="")
+            self.swap(k, smallest)
+
+    def heapifyInefficient(self, lst):
+        """O(nlogn) inefficient heap formation"""
+        for element in lst:
+            self.add(element)
 
     def size(self):
         return self.heapSize
@@ -39,8 +62,7 @@ class PQueue:
 
         # need to deal with case of one element in heap
         if self.heapSize == 1:
-            self.clear()
-            return
+            return self.clear()
 
         self.swap(index, self.size() - 1)
         removedElement = self.heap.pop()
@@ -110,6 +132,8 @@ class PQueue:
             k = smallest
 
     def swap(self, i, j):
+        if i == j:
+            pass
         self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
 
     def less(self, i, j):
@@ -122,3 +146,9 @@ class PQueue:
         for i in range(self.size()):
             if self.heap[i] == element:
                 return self.removeAt(i)
+
+    def sorted(self):
+        out = []
+        while not self.isEmpty():
+            out.append(self.poll())
+        return out
